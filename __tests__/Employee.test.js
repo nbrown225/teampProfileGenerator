@@ -20,6 +20,8 @@ test(`get employee id`, () => {
     expect(employee.id).toEqual(expect.any(Number));
     expect(employee.getName()).toEqual(expect.any(String));
     expect(employee.getId()).toEqual(expect.any(Number));
+    expect(employee.getRole()).toEqual(expect.any(String));
+
 });
 
 // --------EMPLOYEE NAME---------------
@@ -45,5 +47,11 @@ test(`get the employee github`, () => {
     expect(employee.getName()).toEqual(expect.any(String));
     expect(employee.getGithub()).toEqual(expect.any(String));
 
-})
+});
 
+// ------ROLE----------------------
+test(`get the employee role`, () => {
+    const employee = new Employee('Bob', 777, 'bob@job.org', 'github.bob')
+
+    expect(employee.getRole()).toEqual('Employee');
+});
