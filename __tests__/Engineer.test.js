@@ -12,9 +12,16 @@ test('engineer object WILL created', () => {
 
 // GITHUB
 test(`get github`, () => {
-    const engineer = new Engineer('Bill', 211, 'bill.engineew@jobname.net', 'github.com/bill');
+    const engineer = new Engineer('Bill', 311, 'bill.engineew@jobname.net', 'github.com/bill');
 
     expect(engineer.getName()).toEqual(expect.any(String));
     expect(engineer.getGithub()).toEqual(expect.any(String));
 
+});
+
+// ROLE
+test(`get role of engineer`, () => {
+    const engineer = new Engineer('Bill', 411, 'bill.engineew@jobname.net', 'github.com/bill');
+
+    expect(engineer.getRole()).toBe('Engineer');
 });
