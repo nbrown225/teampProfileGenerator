@@ -36,5 +36,14 @@ test(`get empoyees email`, () => {
 
     expect(employee.name).toEqual(expect.any(String));
     expect(employee.getEmail()).toEqual(expect.any(String));
+});
+
+// --------GITHUB------------------
+test(`get the employee github`, () => {
+    const employee = new Employee('Bob', 444, 'bob@job.org', 'github.bob')
+
+    expect(employee.getName()).toEqual(expect.any(String));
+    expect(employee.getGithub()).toEqual(expect.any(String));
+
 })
 
