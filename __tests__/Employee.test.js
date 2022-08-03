@@ -22,10 +22,19 @@ test(`get employee id`, () => {
     expect(employee.getId()).toEqual(expect.any(Number));
 });
 
+// --------EMPLOYEE NAME---------------
 test(`get the employee name`, () => {
-    const employee = new Employee('Bob', 333, 'bob@job.org', 'github.bob')
+    const employee = new Employee('Bob', 333, 'bob@job.org', 'github.bob');
     
     expect(employee.name).toEqual(expect.any(String));
     expect(employee.getName()).toEqual(expect.any(String));
+});
+
+// --------EMPLOYEE EMAIL------------
+test(`get empoyees email`, () => {
+    const employee = new Employee('Bob', 444, 'bob@job.org', 'github.bob');
+
+    expect(employee.name).toEqual(expect.any(String));
+    expect(employee.getEmail()).toEqual(expect.any(String));
 })
 
