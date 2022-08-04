@@ -8,4 +8,19 @@ test(`create inten object`, () => {
     expect(intern.email).toEqual(expect.any(String));
     expect(intern.school).toEqual(expect.any(String));
 
-})
+});
+
+test(`get intern school`, () => {
+    const intern = new Intern('Berry', 322, 'berry@job.com', 'UCAU');
+
+    expect(intern.school).toEqual(expect.any(String));
+    
+});
+
+test(`get role`, () => {
+    const intern = new Intern('Berry', 322, 'berry@job.com', 'UCAU');
+
+    expect(intern.getRole()).toEqual("Intern");
+    
+});
+
