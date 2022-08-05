@@ -1,6 +1,13 @@
+// GET NODE MODULE
 var inquirer = require("inquirer");
 
-const teamData = []
+// TEAM PROFILES
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
+const Manager = require('./lib/Manager');
+
+
+const teamData = [];
 function chooseRole () {
     console.log(
         '============= ADD NEW EMPLOYEE ==================='
@@ -94,10 +101,13 @@ function addEngineer() {
     )
     // CHECK IF NAME WAS ENTERED
     .then((answers) =>{
-        console.log(answers);
+        //console.log(answers);
+        let {name, id, email, github, role} = answers
         teamData.push(answers);
-        console.log(teamData);
-        addAnother();
+        const engineer = new Engineer (name, id, email, github, role)
+        //console.log(teamData);
+        console.log(engineer);
+        //addAnother();
 
         // // let {name, id} = answers;
         // // const engineer = (name, id);
@@ -115,7 +125,7 @@ function addIntern() {
         questions = [
             {
                 type: 'text', 
-                name: 'name',
+                name: 'newName',
                 message: 'Enter name (REQUIRED)',
                 validate: nameInput => {
                     if (nameInput){
@@ -188,7 +198,7 @@ function addManager() {
         questions = [
             {
                 type: 'text', 
-                name: 'name',
+                name: 'newName',
                 message: 'Enter name (REQUIRED)',
                 validate: nameInput => {
                     if (nameInput){
