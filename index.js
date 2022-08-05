@@ -2,6 +2,9 @@ var inquirer = require("inquirer");
 
 const teamData = []
 function chooseRole () {
+    console.log(
+        '============= ADD NEW EMPLOYEE ==================='
+    );
     inquirer.prompt(
 // CHOOSE NEW ROLE
         {
@@ -33,6 +36,9 @@ function chooseRole () {
 }
 // ENGINEER
 function addEngineer() {
+    console.log(
+        '============= Engineer Criteria ==================='
+    );
     inquirer.prompt(
         questions = [
             {
@@ -91,6 +97,8 @@ function addEngineer() {
         console.log(answers);
         teamData.push(answers);
         console.log(teamData);
+        addAnother();
+
         // // let {name, id} = answers;
         // // const engineer = (name, id);
         // // teamData.push(engineer);
@@ -100,6 +108,9 @@ function addEngineer() {
 }
 // INTERN
 function addIntern() {
+    console.log(
+        '============= Intern Criteria ==================='
+    );
     inquirer.prompt(
         questions = [
             {
@@ -158,6 +169,8 @@ function addIntern() {
             console.log(answers);
             teamData.push(answers);
             console.log(teamData);
+            addAnother();
+
             // // let {name, id} = answers;
             // // const engineer = (name, id);
             // // teamData.push(engineer);
@@ -168,6 +181,9 @@ function addIntern() {
 
 // MANAGER
 function addManager() {
+    console.log(
+        '============= Manager Criteria ==================='
+    );
     inquirer.prompt(
         questions = [
             {
@@ -227,6 +243,7 @@ function addManager() {
         console.log(answers);
         teamData.push(answers);
         console.log(teamData);
+        addAnother();
         // // let {name, id} = answers;
         // // const engineer = (name, id);
         // // teamData.push(engineer);
@@ -235,5 +252,7 @@ function addManager() {
     })
 }
 
-
+function addAnother() {
+    chooseRole()
+}
 chooseRole();
