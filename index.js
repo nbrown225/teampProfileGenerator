@@ -40,15 +40,27 @@ function addEngineer() {
                 name: 'newname',
                 message: 'enter name',
                 
+            },
+            {
+                type: 'test', 
+                name: 'id',
+                message: 'Enter ID number (REQUIRED)',
+                validate: idInput=(value)=>{
+                    var valid = !isNaN(parseFloat(value));
+                    return valid || 'ID number is REQUIRED!';
+                }
             }
         ]
     )
     // CHECK IF NAME WAS ENTERED
     .then((answers) =>{
-        let {newname} = answers;
-        const engineer = (newname);
-        teamData.push(engineer);
+        console.log(answers);
+        teamData.push(answers);
         console.log(teamData);
+        // // let {newname, id} = answers;
+        // // const engineer = (newname, id);
+        // // teamData.push(engineer);
+        // // console.log(teamData);
 
     })
 }
