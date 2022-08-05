@@ -1,5 +1,6 @@
 // GET NODE MODULE
 var inquirer = require("inquirer");
+const fs = require('fs');
 
 // TEAM PROFILES
 const Engineer = require('./lib/Engineer');
@@ -107,174 +108,25 @@ function addEngineer() {
         const engineer = new Engineer (name, id, email, github, role)
         //console.log(teamData);
         console.log(engineer);
-        //addAnother();
+        writeFile()
 
-        // // let {name, id} = answers;
-        // // const engineer = (name, id);
-        // // teamData.push(engineer);
-        // // console.log(teamData);
-
-    })
-}
-// INTERN
-function addIntern() {
-    console.log(
-        '============= Intern Criteria ==================='
-    );
-    inquirer.prompt(
-        questions = [
-            {
-                type: 'text', 
-                name: 'newName',
-                message: 'Enter name (REQUIRED)',
-                validate: nameInput => {
-                    if (nameInput){
-                        return true;
-                    } else {
-                        console.log('Name is REQUIRED to continue');
-                        return false;
-                    }
-                }
-                
-            },
-            {
-                type: 'text', 
-                name: 'id',
-                message: 'Enter ID number (REQUIRED)',
-                validate: idInput=(value)=>{
-                    var valid = !isNaN(parseFloat(value));
-                    return valid || 'ID number is REQUIRED!';
-                }
-            },
-            {
-                type: 'text', 
-                name: 'email',
-                message: 'Enter email (REQUIRED)',
-                validate: emailInput => {
-                    if(emailInput){
-                        return true;
-                    } else{
-                        console.log('Email is REQUIRED to continue');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'text',
-                name: 'school',
-                message: 'Enter school (REQUIRED)',
-                validate: schoolInput => {
-                    if (schoolInput) {
-                        return true;
-                    } else {
-                        console.log('School is REQUIRED to continue');
-                        return false;
-                    }
-                }
-            }
-        ]
-        )
-        // CHECK IF NAME WAS ENTERED
-        .then((answers) =>{
-            console.log(answers);
-            teamData.push(answers);
-            console.log(teamData);
-            addAnother();
-
-            // // let {name, id} = answers;
-            // // const engineer = (name, id);
-            // // teamData.push(engineer);
-            // // console.log(teamData);
-    
-        })
-    }
-
-// MANAGER
-function addManager() {
-    console.log(
-        '============= Manager Criteria ==================='
-    );
-    inquirer.prompt(
-        questions = [
-            {
-                type: 'text', 
-                name: 'newName',
-                message: 'Enter name (REQUIRED)',
-                validate: nameInput => {
-                    if (nameInput){
-                        return true;
-                    } else {
-                        console.log('Name is REQUIRED to continue');
-                        return false;
-                    }
-                }
-                
-            },
-            {
-                type: 'text', 
-                name: 'id',
-                message: 'Enter ID number (REQUIRED)',
-                validate: idInput=(value)=>{
-                    var valid = !isNaN(parseFloat(value));
-                    return valid || 'ID number is REQUIRED!';
-                }
-            },
-            {
-                type: 'text', 
-                name: 'email',
-                message: 'Enter email (REQUIRED)',
-                validate: emailInput => {
-                    if(emailInput){
-                        return true;
-                    } else{
-                        console.log('Email is REQUIRED to continue');
-                        return false;
-                    }
-                }
-            },
-            {
-                type: 'list',
-                name: 'building',
-                choices: [111, 222, 333],
-                message: 'Choose Building number (REQUIRED)',
-                validate: buildingInput => {
-                    if (buildingInput) {
-                        return true;
-                    } else {
-                        console.log('Building is REQUIRED to continue');
-                        return false;
-                    }
-                }
-            }
-        ]
-        )
-    // CHECK IF NAME WAS ENTERED
-    .then((answers) =>{
-        console.log(answers);
-        teamData.push(answers);
-        console.log(teamData);
-        addAnother();
-        // // let {name, id} = answers;
-        // // const engineer = (name, id);
-        // // teamData.push(engineer);
-        // // console.log(teamData);
 
     })
 }
 
-
-function addAnother() {
-    console.log(
-        '=========== Add Another Employee? ============='
-    );
-    inquirer.prompt(
-        {
-            type: 'confirm',
-            name: 'addMore',
-            message: 'Add another?',
-            default: false
+function writeFile (data){
+    fs.writeFile('./dist/test.html', data, err=>{
+        if (err) {
+            console.log(err);
+            return
+        } else {
+            console.log('created');
         }
-    )
+    })
+}
+
+function addMore(){
 
 }
+
 chooseRole();
