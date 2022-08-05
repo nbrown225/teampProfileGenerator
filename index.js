@@ -262,7 +262,19 @@ function addManager() {
     })
 }
 
+
 function addAnother() {
-    chooseRole()
+    console.log(
+        '=========== Add Another Employee? ============='
+    );
+    inquirer.prompt(
+        {
+            type: 'confirm',
+            name: 'addMore',
+            message: 'Add another?',
+            default: false
+        }
+    )
+
 }
 chooseRole();
