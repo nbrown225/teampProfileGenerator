@@ -1,33 +1,42 @@
+const fs = require('fs');
 
+const Engineer = require('../lib/Engineer');
+let teamCards = '';
 
-
-const cardArr = [];
-// create Engineer card
-const generateEngineer = function (engineer) {
-    return `
-    <div class="col-4 mt-4">
-        <div class="card h-100">
-            <div class="card-header">
-                <h3>${engineer.name}</h3>
-                <h4>Engineer</h4><i class="material-icons">laptop_mac</i>
-            </div>
-            <div class="card-body">
-                <p class="id">ID: ${engineer.id}</p>
-                <p class="email">Email: <a href="mailto:${engineer.email}">${engineer.email}</a></p>
-                <p class="github">Github: <a href="https://github.com/${engineer.github}">${engineer.github}</a></p>
-            </div>
-        </div>
-    </div>
-    `
-}
-    if (engineer){
-        engineerCard = generateEngineer(engineer);
-        cardArr.push(engineerCard)
+function cardHandler(employee){
+    let htmlString = '';
+    switch(employee.getRole()){
+        case 'Engineer':
+            htmlString = generateEngineer(employee);
+            break;
+            default:
+                console.log('error from switch case');
     }
+    return htmlString;
+}
+
+// create Engineer card
+function generateEngineer(employee){
+    return`
+    <div class="card">
+    <div class="container">
+        <h2>${employee.name}</h2>
+        <h2>${employee.id}</h2>
+        <h4> ID: ${employee.email}</h4>
+        <h4> Github: ${employee.github}
+    </div>
+</div>
+`
+}
+
+
 
 
 // generate html page 
-const generateHTML = function (cardArr) {  
+const generateHTML = function (teamData) {  
+    //console.log(teamData);
+
+    teamCards += cardHandler(teamData)
   return`
   <!DOCTYPE html>
   <html lang="en">
@@ -47,7 +56,7 @@ const generateHTML = function (cardArr) {
       </header>
       <main class="card-panel teal center">
       <div class="row s12 center">
-        ${cardArr}
+        ${teamCards}
           <div class="col s3 card-panel" id="intern-card">
               <div class="card-title">
                   <h2 id="name">Bob</h2>
